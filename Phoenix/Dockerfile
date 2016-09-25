@@ -26,19 +26,18 @@ RUN set -xe \
 #PhoenixInstall
 #========================================
 
-RUN apt-get install -y nodejs npm
+RUN apt-get update\
+&& apt-get install -y nodejs npm
 
-RUN set -xe \
-      && npm cache clean\
-			&& npm install n -g\
-			&& n stable\
-			&& ln -sf /usr/local/bin/node /usr/bin/node\
-			&& echo Y | mix local.hex\
-			&& echo Y | mix archive.install https://github.com/phoenixframework/archives/raw/master/phoenix_new.ez
+RUN npm cache clean\
+&& npm install n -g\
+&& n stable\
+&& ln -sf /usr/local/bin/node /usr/bin/node\
+&& node -v\
+&& apt-get purge -y nodejs npm
 
-RUN mkdir phoenixapp
-WORKdIR phoenixapp
-
-RUN echo Y | mix phoenix.new myapp
-
-# CMD ["mix phoenix.server"]
+RUN mix local.hex --force
+RUN mix archive.install https://github.com/phoenixframework/archives/raw/master/phoenix_new.ez --force
+RUN mkdir /phoenixapp
+WORKdIR /phoenixapp
+ADD ./phoenixapp
