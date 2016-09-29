@@ -1,7 +1,14 @@
 version: '2'
 services:
   db:
-    image: postgres
+    image: postgres:9.5
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: "postgres"
+      POSTGRES_USER: "postgres"
+    expose:
+      - "5432"
+
   web:
     build: .
     command: mix phoenix.server
@@ -11,3 +18,22 @@ services:
       - "4000:4000"
     depends_on:
       - db
+
+  # postgres_user:
+  #   build: .
+  #   command: createuser -P -d postgres
+  #   environment:
+  #     POSTGRES_PASSWORD: "postgres"
+  #     POSTGRES_USER: "postgres"
+  #   volumes:
+  #     - .:/phoenixapp
+  #   depends_on:
+  #     - db
+
+  database_create:
+    build: .
+    command: mix ecto.create
+    volumes:
+      - .:/phoenixapp
+    depends_on:
+      - web
