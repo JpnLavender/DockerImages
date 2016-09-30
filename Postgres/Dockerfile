@@ -8,7 +8,7 @@ RUN apt-get update && \
 
 USER postgres
 RUN /etc/init.d/postgresql start &&\
-    psql --command "CREATE USER docker WITH SUPERUSER PASSWORD 'docker';" &&\
+    psql --command "CREATE USER postgres WITH SUPERUSER PASSWORD 'postgres';" &&\
     psql --command "CREATE DATABASE docker WITH OWNER docker TEMPLATE template0 ENCODING 'UTF8';" &&\
     echo "host all  all    0.0.0.0/0  md5" >> /etc/postgresql/9.3/main/pg_hba.conf &&\
     echo "listen_addresses='*'" >> /etc/postgresql/9.3/main/postgresql.conf
