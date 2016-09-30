@@ -6,7 +6,6 @@ services:
       - "5432"
     ports:
       - "5432:5432"
-
   web:
     build: .
     command: mix phoenix.server
@@ -24,7 +23,6 @@ services:
       - .:/phoenixapp
     depends_on:
       - db
-
   database_create:
     build: .
     command: mix ecto.create
