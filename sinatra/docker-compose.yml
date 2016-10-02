@@ -1,0 +1,14 @@
+version: '2'
+services:
+  db:
+    image: postgres
+  web:
+    build: .
+    command: ruby app.rb
+    volumes:
+      - .:/myapp
+    ports:
+      - "4567:4567"
+    depends_on:
+      - db
+
