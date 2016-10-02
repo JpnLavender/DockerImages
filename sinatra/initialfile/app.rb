@@ -5,5 +5,6 @@ require 'sinatra'
 require './models.rb'
 
 get '/' do
+  @text = "HelloWorld"
   erb :index
 end

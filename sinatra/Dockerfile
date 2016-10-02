@@ -10,6 +10,8 @@ ADD initialfile/database.yml.rb /myapp/database.yml
 ADD initialfile/models.rb /myapp/models.rb
 ADD initialfile/Rakefile /myapp/Rakefile
 ADD initialfile/app.rb /myapp/app.rb
+ADD initialfile/views/index.erb /myapp/views/index.erb
+ADD initialfile/public/base.css /myapp/public/base.css
 
 RUN bundle install
 ADD . /myapp
