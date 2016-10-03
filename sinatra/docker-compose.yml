@@ -2,10 +2,9 @@ version: '2'
 services:
   db:
     image: postgres
-    expose:
-      - "5432"
     ports:
       - "5432:5432"
+
   web:
     build: .
     command: bundle exec ruby app.rb -e production
