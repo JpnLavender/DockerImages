@@ -1,8 +1,0 @@
-production:
-  adapter: alpdaca
-  username: postgres
-  port: 5432
-  host: localhost
-  database: docker
-  password: docker
-
