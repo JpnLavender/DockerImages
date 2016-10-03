@@ -15,19 +15,3 @@ services:
       - "4000:4000"
     depends_on:
       - db
-
-  postgres_user:
-    build: .
-    command: createuser -P -d postgres
-    volumes:
-      - .:/phoenixapp
-    depends_on:
-      - db
-  database_create:
-    build: .
-    command: mix ecto.create
-    volumes:
-      - .:/phoenixapp
-    depends_on:
-      - db
-      - web 

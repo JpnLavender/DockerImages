@@ -1,5 +1,6 @@
 require 'bundler/setup'
 Bundler.require
+<<<<<<< HEAD
 require 'uri'
 #
 # configure :production, :development do
