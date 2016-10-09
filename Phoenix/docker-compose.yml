@@ -1,7 +1,9 @@
 version: '2'
 services:
   db:
-    image: postgres
+    image: postgres:9.5.4
+    volumes:
+      - ./db/postgres:/ver/lib/postgresql/data
   web:
     build: .
     command: mix phoenix.server
