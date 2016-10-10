@@ -1,8 +1,7 @@
-production:
-  adapter: postgresql
-  encoding: unicode
-  database: postgres
-  pool: 5
-  username: postgres
-  password:
-  host: localhost
+adapter: postgresql
+encoding: unicode
+database: postgres
+pool: 5
+username: postgres
+password: ""
+host: db
