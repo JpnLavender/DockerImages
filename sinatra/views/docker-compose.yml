@@ -1,13 +1,14 @@
 version: '2'
 services:
   db:
-    image: postgres
+    image: postgres:9.5.2
+    volumes:
+      - ./db/postgres:/ver/lib/postgresql/data
     ports:
       - "5432:5432"
-
   web:
     build: .
-    command: bundle exec ruby app.rb -e production
+    command: bundle exec ruby app.rb
     volumes:
       - .:/myapp
     ports:
